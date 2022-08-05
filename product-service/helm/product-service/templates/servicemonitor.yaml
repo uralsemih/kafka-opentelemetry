@@ -1,0 +1,20 @@
+{{- if .Values.servicemonitor.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: product-service
+  namespace: monitoring
+  labels:
+    release: prometheus
+spec:
+  endpoints:
+  - path: "/metrics"
+    port: 8005
+    interval: 5s
+  namespaceSelector:
+    matchNames:
+      - comnext
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: product-service
+{{- end }}

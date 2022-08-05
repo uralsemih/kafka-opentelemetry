@@ -1,0 +1,34 @@
+{
+  "name": "product-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:local": "nodemon --require ./src/tracing.js src/index.js",
+    "start": "node --require './src/tracing.js' src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@opentelemetry/api": "^1.1.0",
+    "@opentelemetry/auto-instrumentations-node": "^0.31.0",
+    "@opentelemetry/exporter-trace-otlp-grpc": "^0.30.0",
+    "@opentelemetry/instrumentation-express": "^0.30.0",
+    "@opentelemetry/propagator-b3": "^1.4.0",
+    "@opentelemetry/resources": "^1.4.0",
+    "@opentelemetry/sdk-node": "^0.30.0",
+    "@opentelemetry/semantic-conventions": "^1.4.0",
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "kafkajs": "^2.1.0",
+    "mongoose": "^6.4.6",
+    "opentelemetry-instrumentation-kafkajs": "^0.29.0",
+    "prom-client": "^14.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}

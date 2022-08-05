@@ -1,0 +1,20 @@
+{{- if .Values.servicemonitor.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: basket-service
+  namespace: monitoring
+  labels:
+    release: prometheus
+spec:
+  endpoints:
+  - path: "/actuator/prometheus"
+    port: 8004
+    interval: 30s
+  namespaceSelector:
+    matchNames:
+      - comnext
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: basket-service
+{{- end }}
