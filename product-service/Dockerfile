@@ -1,4 +1,4 @@
-FROM registry.tools.3stripes.net/eft-wm-images-public/node:16.16.0-alpine3.15 as build
+FROM node:16.16.0-alpine3.15 as build
 WORKDIR /src
 RUN --mount=type=cache,target=/var/cache/apk \
   apk add --update --virtual build-dependencies build-base \
@@ -13,7 +13,7 @@ RUN --mount=type=cache,target=/src/.npm \
     npm ci
 COPY . .
 
-FROM registry.tools.3stripes.net/eft-wm-images-public/node:16.16.0-alpine3.15
+FROM node:16.16.0-alpine3.15
 WORKDIR /src
 COPY --from=build /src /src
 EXPOSE 8005
